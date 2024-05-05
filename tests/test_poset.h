@@ -5,6 +5,8 @@
 #ifndef FINITE_HOMOLOGIES_TEST_POSET_H
 #define FINITE_HOMOLOGIES_TEST_POSET_H
 
+#pragma once
+
 #include "../poset.h"
 #include "../scomplex.h"
 

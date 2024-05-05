@@ -25,4 +25,6 @@ add_executable(finite_homologies main.cpp
         chaincomplex.cpp
         chaincomplex.h
         tests/test_chaincomplex.cpp
-        tests/test_chaincomplex.h)
+        tests/test_chaincomplex.h
+        tests/test_allsubsets.cpp
+        tests/test_allsubsets.h)

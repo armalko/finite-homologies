@@ -128,8 +128,33 @@ void RunChainComplexTests() {
         ch.SetDimension(0, 3);
         ch.SetDimension(1, 3);
 
-        CheckInts(ch.FindBetti(1), 1);
-        CheckVectors(ch.FindAllBettiNumbers(), {1, 1});
+        CheckInts(ch.ComputeBetti(1), 1);
+        CheckVectors(ch.ComputeAllBettiNumbers(), {1, 1});
+    }
+
+    // From SComplex
+    {
+        SComplex sc ({{0, 1}, {0, 2}, {1, 2}});
+        ChainComplex ch (sc);
+        CheckVectors(ch.ComputeAllBettiNumbers(), {1, 1});
+
+        SComplex sc1 ({{0, 1, 2}, {0, 2, 3}, {1, 2, 3}, {0, 1, 3}});
+        ChainComplex ch1 (sc1);
+        CheckVectors(ch1.ComputeAllBettiNumbers(), {1, 0, 1});
+
+        SComplex sc2 ({{0, 1, 2, 3}});
+        ChainComplex ch2 (sc2);
+        CheckVectors(ch2.ComputeAllBettiNumbers(), {1, 0, 0, 0});
+
+        SComplex sc3 ({{0, 1}});
+        ChainComplex ch3 (sc3);
+        CheckVectors(ch3.ComputeAllBettiNumbers(), {1, 0});
+
+        // Torus
+        SComplex sc4 ({{0, 1, 5}, {0, 3, 5}, {0, 2, 3}, {0, 4, 6}, {0, 6, 2}, {0, 1, 4},
+                       {1, 2, 3}, {1, 6, 5}, {1, 3, 6}, {3, 4, 6}, {5, 6, 2}, {5, 4, 2}, {5, 3, 4}, {2, 4, 1}});
+        ChainComplex ch4 (sc4);
+        CheckVectors(ch4.ComputeAllBettiNumbers(), {1, 2, 1});
     }
 
     std::cout << "Passed " << PASSED_TESTS_CHAIN << "/" << TOTAL_TESTS_CHAIN << "\n\n";
